@@ -1,33 +1,33 @@
 📝results and some thoughts:
 
 1. 0.1 MM vs 1 MM:
-   - Mean difference = -0.9056 (average difference = -0.91)
+   - Mean difference = -0.9013 (average difference = -0.90)
    - p-adj = 0.0 (since the p-value is less than 0.05, the difference is statistically significant)
    - Conclusion: The 0.1 MM group is statistically significantly smaller than the 1 MM group, so the difference between these two groups is significant.
 
 2. 0.1 MM vs ctrl (control):
-   - Mean difference = -0.4093 (average difference = -0.41)
-   - p-adj = 0.0046 (since the p-value is less than 0.05, the difference is statistically significant)
+   - Mean difference = -0.4049 (average difference = -0.40)
+   - p-adj = 0.0 (since the p-value is less than 0.05, the difference is statistically significant)
    - Conclusion: The 0.1 MM group is statistically significantly smaller than the control group, so 0.1 MM changes the level of p-STAT-1 compared to the control group.
 
 3. 0.1 MM vs stim (stimulation):
-   - Mean difference = 0.0011 (average difference = 0.0011)
-   - p-adj = 1.0 (not significant, p-value > 0.05)
+   - Mean difference = 0.0043 (average difference = 0.0043)
+   - p-adj = 0.9264 (not significant, p-value > 0.05)
    - Conclusion: The differences between the 0.1 MM group and the stimulated group are not statistically significant. This means that stimulation in this group does not have a clear impact on the level of p-STAT-1 compared to 0.1 MM.
 
 4. 1 MM vs ctrl:
-   - Mean difference = 0.4963 (average difference = 0.50)
-   - p-adj = 0.0013 (since the p-value is less than 0.05, the difference is statistically significant)
+   - Mean difference = 0.4965 (average difference = 0.50)
+   - p-adj = 0.0 (since the p-value is less than 0.05, the difference is statistically significant)
    - Conclusion: The 1 MM group is statistically significantly higher than the control group, suggesting that 1 MM has a significant impact on the level of p-STAT-1 compared to the control group.
 
 5. 1 MM vs stim:
-   - Mean difference = 0.9066 (average difference = 0.91)
+   - Mean difference = 0.9056 (average difference = 0.91)
    - p-adj = 0.0 (since the p-value is less than 0.05, the difference is statistically significant)
    - Conclusion: The 1 MM group is statistically significantly higher than the stimulated group, suggesting that 1 MM significantly changes the level of p-STAT-1 compared to stimulation alone.
 
 6. ctrl vs stim:
-   - Mean difference = 0.4103 (average difference = 0.41)
-   - p-adj = 0.0045 (since the p-value is less than 0.05, the difference is statistically significant)
+   - Mean difference = 0.4091 (average difference = 0.41)
+   - p-adj = 0.0 (since the p-value is less than 0.05, the difference is statistically significant)
    - Conclusion: The stimulated group has a statistically significantly higher level of p-STAT-1 compared to the control group.
 
 General conclusions:
