@@ -1,4 +1,4 @@
-##Influence of 17-AAG a Hsp90 inhibitor on signaling pathway in Atopic Dermatitis
+#Influence of 17-AAG a Hsp90 inhibitor on signaling pathway in Atopic Dermatitis
 
 The aim of this paper is to analyze the impact of the Hsp90 inhibitor on cellular signaling in the context of atopic dermatitis therapy.
 
