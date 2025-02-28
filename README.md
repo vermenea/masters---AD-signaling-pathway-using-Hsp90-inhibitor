@@ -26,6 +26,8 @@ The phosphorylation status of the following signaling proteins was analyzed:
 
 The activation of these proteins, as well as the role of Hsp90 acetylation (acLys284/292), was assessed in activated HaCaT cells using **immunoblotting**.
 
+Densynometry was conducted using ImageJ. The results were then imported into Excel, where they were normalized against β-actin. Subsequently, the data was transferred into Visual Studio Code for further analysis using Python.
+
 ## Results and Conclusion
 
 Soon...
