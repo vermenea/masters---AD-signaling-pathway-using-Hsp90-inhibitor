@@ -5,7 +5,7 @@ import sys
 import matplotlib.pyplot as plt
 from statsmodels.stats.multicomp import pairwise_tukeyhsd
 
-sys.path.append('c:/Users/mient/Desktop/biology/masters---AD-signaling-pathway-using-Hsp90-inhibitor/scripts')
+sys.path.append('/Users/vermenea/Documents/biologia/masters/analysis/scripts')
 
 from beta_actin_data import beta_actin_data
 from pstat1_data import pstat1_data, means_df

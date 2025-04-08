@@ -1,0 +1,44 @@
+Summary of pSTAT6 Analysis:
+
+1. Data Overview:
+   - The input data includes pSTAT6 measurements for four groups: Control, Stimulation, 0.1MM Treatment, and 1MM Treatment.
+   - All groups have identical values, resulting in zero variance within each group.
+
+2. Normality Test (Shapiro-Wilk):
+   - All groups passed the Shapiro-Wilk test with p-values of 1.0, indicating that the data is normally distributed.
+
+3. Homogeneity of Variances Test (Levene's Test):
+   - Levene's test returned NaN for both the statistic and p-value due to zero variance in the data.
+   - Variances are considered unequal, requiring Welch ANOVA or a non-parametric test.
+
+4. Statistical Test:
+   - Kruskal-Wallis Test was used due to unequal variances.
+   - Result: Statistic = 11.0, p-value = 0.0117.
+   - The p-value indicates significant differences between the groups.
+
+5. Post-hoc Analysis (Tukey's Test):
+   - Significant differences were observed between all group pairs.
+   - Meandiff values and confidence intervals confirm the differences.
+
+Conclusion:
+- The analysis highlights significant differences in pSTAT6 levels across the groups, despite the identical input values. This result may be influenced by the zero variance in the data and should be interpreted with caution.
+
+📝results and some thoughts:
+
+- **PSTAT6 Data Analysis Results**:
+  - **Shapiro-Wilk Test**:
+    - All groups (Control, Stimulation, 0.1MM Treatment, 1MM Treatment) are normally distributed (p-value = 1.0).
+  - **Levene's Test**:
+    - Variances are NOT equal (Statistic: nan, p-value: nan). Use non-parametric tests.
+  - **Kruskal-Wallis Test**:
+    - Statistic: 11.0, p-value: 0.0117. Significant differences exist between groups.
+  - **Tukey HSD Test**:
+    - Significant pairwise differences were found between all groups:
+      - 0.1MM Treatment vs. 1MM Treatment: Reject null hypothesis.
+      - 0.1MM Treatment vs. Control: Reject null hypothesis.
+      - 0.1MM Treatment vs. Stimulation: Reject null hypothesis.
+      - 1MM Treatment vs. Control: Reject null hypothesis.
+      - 1MM Treatment vs. Stimulation: Reject null hypothesis.
+      - Control vs. Stimulation: Reject null hypothesis.
+
+

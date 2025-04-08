@@ -1,0 +1,21 @@
+📝results and some thoughts:
+
+1. Shapiro-Wilk Test:
+   - None of the groups (Control, Stimulation, 0.1MM Treatment, 1MM Treatment) are normally distributed.
+   - Statistic = nan, p-value = nan.
+
+2. Levene’s Test:
+   - Variances are not equal.
+   - Statistic = nan, p-value = nan.
+   - Recommendation: Use Welch ANOVA or a non-parametric test.
+
+3. Kruskal-Wallis Test:
+   - Statistic = 3.0, p-value = 0.3916.
+   - Conclusion: No significant differences between groups.
+
+4. Tukey HSD Test:
+   - Pairwise comparisons between groups show no significant differences.
+   - All p-adj = nan.
+
+
+
