@@ -1,4 +1,4 @@
-📝results and some thoughts:
+📝results and some thoughts - p-STAT-1
 
 1. 0.1 MM vs 1 MM:
    - Mean difference = -0.9013 (average difference = -0.90)

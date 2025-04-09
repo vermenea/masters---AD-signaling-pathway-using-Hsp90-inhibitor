@@ -1,13 +1,16 @@
 #imports
-import sys
-sys.path.append('/Users/vermenea/Documents/biologia/masters/analysis/scripts')
-
-from beta_actin_data import beta_actin_data
-from mapk_data import data as mapk_data
-import matplotlib.pyplot as plt
 import pandas as pd
 import scipy.stats as stats
+import sys
+import matplotlib.pyplot as plt
 from statsmodels.stats.multicomp import pairwise_tukeyhsd
+import seaborn as sns
+
+sys.path.append('C:/Users/mient/Desktop/biology/masters---AD-signaling-pathway-using-Hsp90-inhibitor/scripts/')
+
+
+from beta_actin_data import beta_actin_data
+from mapk_data import mapk_data
 
 #preparing data
 control_beta_actin = beta_actin_data["control"][0]
@@ -15,16 +18,12 @@ stimulation_beta_actin = beta_actin_data["stimulation"][0]
 treatment_01_beta_actin = beta_actin_data["0.1MM_treatment"][0]
 treatment_1_beta_actin = beta_actin_data["1MM_treatment"][0]
 
-control_mapk = mapk_data["control"][0]
-stimulation_mapk = mapk_data["stimulation"][0]
-treatment_01_mapk = mapk_data["0.1MM_treatment"][0]
-treatment_1_mapk = mapk_data["1MM_treatment"][0]
 
 # Individual normalized values
-normalized_control = [control_beta_actin / control_mapk]
-normalized_stimulation = [stimulation_beta_actin / stimulation_mapk]
-normalized_treatment_01 = [treatment_01_beta_actin / treatment_01_mapk]
-normalized_treatment_1 = [treatment_1_beta_actin / treatment_1_mapk]
+normalized_control = [control_beta_actin / p for p in mapk_data["control"]]
+normalized_stimulation = [stimulation_beta_actin / p for p in mapk_data["stimulation"]]
+normalized_treatment_01 = [treatment_01_beta_actin / p for p in mapk_data["0.1MM_treatment"]]
+normalized_treatment_1 = [treatment_1_beta_actin / p for p in mapk_data["1MM_treatment"]]
 
 # Normality test (Shapiro-Wilk) for each group
 p_values_shapiro = []
@@ -76,13 +75,42 @@ df = pd.DataFrame({'value': data, 'group': group})
 tukey_result = pairwise_tukeyhsd(df['value'], df['group'], alpha=0.05)
 print(tukey_result)
 
-#plotting
-labels = ['Control', 'Stimulation', '0.1MM Treatment', '1MM Treatment']
-normalized_values = [normalized_control[0], normalized_stimulation[0], normalized_treatment_01[0], normalized_treatment_1[0]]
+# plotting
+group_order = ['Control', 'Stimulation', '0.1MM Treatment', '1MM Treatment']
+palette = ['#FF0099', '#CC0099', '#990066', '#660066']
+
+sns.set_theme(style="whitegrid")
 
 plt.figure(figsize=(10, 6))
-plt.bar(labels, normalized_values, color=['#FF0099', '#CC0099', '#990066', '#660066'])
-plt.xlabel('Normalized MAPK Levels with Beta-actin')
-plt.ylabel('Normalized MAPK')
-plt.title('Phosphorylation of MAPK')
+ax = sns.boxplot(x='group', y='value', data=df, order=group_order, palette=palette, linewidth=1.3)
+
+# Add means to the plot
+means = df.groupby('group')['value'].mean().reindex(group_order)
+for i, mean in enumerate(means):
+    ax.plot(i, mean, marker='o', color='white', markersize=8, markeredgewidth=2, markeredgecolor='#4A235A')
+
+ax.set_title('Phosphorylation of MAPK', fontsize=18, fontweight='bold', color='#4A235A')
+ax.set_ylabel('MAPK / Beta Actin', fontsize=14, color='#4A235A')
+ax.set_xlabel('')
+ax.tick_params(axis='x', labelsize=12, colors='#4A235A')
+ax.tick_params(axis='y', labelsize=12, colors='#4A235A')
+sns.despine()
+
+# Add significance markers
+significant_pairs = tukey_result.summary().data[1:]
+y_max = df['value'].max() + 0.3
+offset = 0.05
+for pair in significant_pairs:
+    group1, group2, p_val = pair[0], pair[1], pair[2]
+    if group1 not in group_order or group2 not in group_order:
+        continue
+    x1 = group_order.index(group1)
+    x2 = group_order.index(group2)
+    height = y_max + offset
+    ax.plot([x1, x1, x2, x2], [height, height + 0.02, height + 0.02, height], lw=1.2, c='#4A235A')
+    ax.text((x1 + x2) / 2, height + 0.03, '*' if p_val < 0.05 else 'ns',
+            ha='center', va='bottom', fontsize=12, color='#4A235A')
+    offset += 0.15
+
+plt.tight_layout()
 plt.show()

@@ -1,21 +1,58 @@
-📝results and some thoughts:
+📝Results and Some Thoughts - p-STAT-3
 
-1. Shapiro-Wilk Test:
-   - None of the groups (Control, Stimulation, 0.1MM Treatment, 1MM Treatment) are normally distributed.
-   - Statistic = nan, p-value = nan.
+1.0.1 MM vs 1 MM
 
-2. Levene’s Test:
-   - Variances are not equal.
-   - Statistic = nan, p-value = nan.
-   - Recommendation: Use Welch ANOVA or a non-parametric test.
+Mean difference = -0.2043
 
-3. Kruskal-Wallis Test:
-   - Statistic = 3.0, p-value = 0.3916.
-   - Conclusion: No significant differences between groups.
+p-adj = 0.0 (statistically significant)
 
-4. Tukey HSD Test:
-   - Pairwise comparisons between groups show no significant differences.
-   - All p-adj = nan.
+Conclusion: The 0.1 MM group is significantly lower than the 1 MM group, indicating that a higher concentration increases p-STAT3 levels.
 
+2.0.1 MM vs ctrl (control)
 
+Mean difference = 0.3064
 
+p-adj = 0.0 (statistically significant)
+
+Conclusion: The 0.1 MM group is significantly lower than the control group, suggesting that low-dose treatment decreases p-STAT3 activity.
+
+3.0.1 MM vs stim (stimulation)
+
+Mean difference = 0.0003
+
+p-adj = 0.0882 (not significant)
+
+Conclusion: There's no significant difference between 0.1 MM and the stimulation group, meaning the treatment has little to no impact compared to stimulation alone at this dose.
+
+4.1 MM vs ctrl
+
+Mean difference = 0.5107
+
+p-adj = 0.0 (statistically significant)
+
+Conclusion: The 1 MM group is significantly higher than the control group, showing a strong activation of p-STAT3 at high dose.
+
+5.1 MM vs stim
+
+Mean difference = 0.2046
+
+p-adj = 0.0 (statistically significant)
+
+Conclusion: The 1 MM group significantly increases p-STAT3 compared to stimulation, indicating a potent enhancing effect from the treatment.
+
+6.ctrl vs stim
+
+Mean difference = -0.3062
+
+p-adj = 0.0 (statistically significant)
+
+Conclusion: The stimulation group is significantly lower than the control group, which could point to a suppression or regulatory feedback effect from stimulation alone.
+
+General Conclusions:
+0.1 MM treatment shows no significant change from stimulation but is significantly lower than both control and 1 MM → suggests weak or minimal activity at low dose.
+
+1 MM treatment leads to significant increases in p-STAT3 compared to all groups → supports a dose-dependent activation pattern.
+
+Stimulation alone reduces p-STAT3 compared to control → might reflect transient dephosphorylation or negative regulation.
+
+✨These findings show that p-STAT3, like p-STAT6, responds sensitively to 17-AAG concentration. The high dose (1 MM) consistently boosts phosphorylation levels, hinting at a shared mechanism affecting STAT signaling through Hsp90 inhibition.✨

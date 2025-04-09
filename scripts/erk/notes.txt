@@ -1,0 +1,60 @@
+📝results and some thoughts - ERK
+
+1.0.1 MM vs 1 MM
+
+Mean difference = 0.0017
+
+p-adj = 0.0 (statistically significant)
+
+Conclusion: Despite the very small numerical difference, this comparison is statistically significant. 0.1 MM results in slightly higher ERK levels than 1 MM.
+
+2.0.1 MM vs ctrl (control)
+
+Mean difference = 0.1031
+
+p-adj = 0.0 (statistically significant)
+
+Conclusion: The 0.1 MM group shows significantly lower ERK expression than the control, indicating suppression at this treatment level.
+
+3.0.1 MM vs stim (stimulation)
+
+Mean difference = -0.1948
+
+p-adj = 0.0 (statistically significant)
+
+Conclusion: The 0.1 MM group is markedly lower than the stimulation group, indicating a strong reduction of ERK in response to treatment.
+
+4.1 MM vs ctrl
+
+Mean difference = 0.1013
+
+p-adj = 0.0 (statistically significant)
+
+Conclusion: The 1 MM group is significantly lower than control as well, reinforcing that both doses reduce ERK signaling, with 1 MM having a slightly stronger effect.
+
+5.1 MM vs stim
+
+Mean difference = -0.1965
+
+p-adj = 0.0 (statistically significant)
+
+Conclusion: Again, significant suppression of ERK in the 1 MM group compared to stimulation alone.
+
+6.ctrl vs stim
+
+Mean difference = -0.2978
+
+p-adj = 0.0 (statistically significant)
+
+Conclusion: Stimulation decreases ERK compared to control, suggesting a baseline effect of stimulation on ERK levels, even before treatment.
+
+🧪 General Conclusions:
+Both 0.1 MM and 1 MM concentrations of 17-AAG significantly reduce ERK levels compared to both control and stimulation.
+
+Stimulation alone reduces ERK, and treatment further intensifies this suppression.
+
+The difference between 0.1 MM and 1 MM is statistically significant but biologically subtle, suggesting both doses are effective, with a marginal additive effect at 1 MM.
+
+The pattern is identical to the MAPK dataset, which is expected, as ERK is part of the MAPK signaling pathway.
+
+✨These findings support the idea that Hsp90 inhibition via 17-AAG suppresses ERK signaling—likely through destabilizing key components in the MAPK/ERK cascade. This suppression may underlie the broader changes seen in cellular responses to stimulation.✨

@@ -1,0 +1,33 @@
+🧬 Discussion: Effects of 17-AAG on STAT and MAPK/ERK Signaling Pathways
+The current study evaluated the effect of the Hsp90 inhibitor 17-AAG on key signaling pathways involved in Alzheimer’s Disease (AD)-related cellular responses, specifically focusing on p-STAT6, p-STAT3, and components of the MAPK/ERK cascade, under both stimulated and unstimulated conditions. Two concentrations of 17-AAG (0.1 µM and 1 µM) were used to determine dose-dependent effects.
+
+🔹 STAT6 Pathway
+ANOVA and post hoc Tukey HSD tests revealed that 1 µM 17-AAG significantly increased p-STAT6 levels compared to control and stimulation groups (p < 0.001), while 0.1 µM showed no significant difference compared to stimulation alone. These results suggest that higher concentrations of 17-AAG may induce compensatory activation of p-STAT6, possibly through feedback loops or indirect signaling effects. The increase in STAT6 phosphorylation at 1 µM may be linked to cellular stress responses or alternate cytokine signaling pathways activated due to Hsp90 inhibition.
+
+🔹 STAT3 Pathway
+In contrast to STAT6, both 0.1 µM and 1 µM 17-AAG treatments significantly suppressed p-STAT3 levels compared to control and stimulation (p < 0.001). Importantly, there was no significant difference between 0.1 µM and stimulation, while 1 µM induced a stronger reduction, highlighting a clear dose-dependent suppression of STAT3 activity. Given that STAT3 is commonly associated with inflammatory and survival signaling, this result supports the hypothesis that Hsp90 inhibition downregulates pro-inflammatory signaling cascades, potentially offering neuroprotective benefits in AD.
+
+🔹 MAPK/ERK Pathway
+Both MAPK and ERK datasets showed consistent and highly significant reductions in expression following 17-AAG treatment. The data revealed:
+
+A dramatic decrease in MAPK/ERK levels at 1 µM, with mean differences of up to ~0.20 normalized units compared to stimulation.
+
+0.1 µM also significantly reduced MAPK/ERK, although slightly less than 1 µM.
+
+Interestingly, even stimulation alone decreased ERK compared to control, and both doses of 17-AAG further amplified this effect (p < 0.001).
+
+These findings strongly indicate that 17-AAG disrupts MAPK/ERK signaling in a dose-dependent manner, likely by destabilizing client proteins such as Raf or MEK that depend on Hsp90 for stability and function. Given ERK’s role in cell proliferation and differentiation, this reduction may contribute to anti-inflammatory or anti-proliferative effects observed with Hsp90 inhibition.
+
+C:\Users\mient\Desktop\biology\masters---AD-signaling-pathway-using-Hsp90-inhibitor\assets\summary_masters_results.png  ---- summary in table
+
+✨ Conclusions
+Our data suggest that Hsp90 inhibition via 17-AAG has differential effects across signaling pathways:
+
+STAT3 and MAPK/ERK are suppressed by both 0.1 µM and 1 µM, consistent with reduced pro-inflammatory signaling and cell growth.
+
+STAT6, in contrast, is only upregulated at higher concentrations, possibly indicating a compensatory pathway activation or cell-specific signaling rewiring.
+
+These effects align with the role of Hsp90 in stabilizing a broad range of signaling proteins, including kinases and transcription factors. Its inhibition thus causes a domino-like collapse of multiple intracellular signaling cascades.
+
+Such dose-dependent and pathway-specific modulation makes 17-AAG a promising molecule in the context of targeted therapeutic strategies for neurodegenerative conditions, where selective suppression of inflammatory or proliferative pathways is desirable.
+

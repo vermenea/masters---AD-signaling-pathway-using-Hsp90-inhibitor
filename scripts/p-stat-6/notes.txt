@@ -1,44 +1,58 @@
-Summary of pSTAT6 Analysis:
+📝Results and Some Thoughts - p-STAT-6
 
-1. Data Overview:
-   - The input data includes pSTAT6 measurements for four groups: Control, Stimulation, 0.1MM Treatment, and 1MM Treatment.
-   - All groups have identical values, resulting in zero variance within each group.
+1.0.1 MM vs 1 MM
 
-2. Normality Test (Shapiro-Wilk):
-   - All groups passed the Shapiro-Wilk test with p-values of 1.0, indicating that the data is normally distributed.
+Mean difference = -0.4435
 
-3. Homogeneity of Variances Test (Levene's Test):
-   - Levene's test returned NaN for both the statistic and p-value due to zero variance in the data.
-   - Variances are considered unequal, requiring Welch ANOVA or a non-parametric test.
+p-adj = 0.0 (statistically significant)
 
-4. Statistical Test:
-   - Kruskal-Wallis Test was used due to unequal variances.
-   - Result: Statistic = 11.0, p-value = 0.0117.
-   - The p-value indicates significant differences between the groups.
+Conclusion: The 0.1 MM group is significantly lower than the 1 MM group. This indicates that a higher concentration (1 MM) of the compound increases p-STAT6 activation.
 
-5. Post-hoc Analysis (Tukey's Test):
-   - Significant differences were observed between all group pairs.
-   - Meandiff values and confidence intervals confirm the differences.
+2.0.1 MM vs ctrl (control)
 
-Conclusion:
-- The analysis highlights significant differences in pSTAT6 levels across the groups, despite the identical input values. This result may be influenced by the zero variance in the data and should be interpreted with caution.
+Mean difference = -0.2788
 
-📝results and some thoughts:
+p-adj = 0.0 (statistically significant)
 
-- **PSTAT6 Data Analysis Results**:
-  - **Shapiro-Wilk Test**:
-    - All groups (Control, Stimulation, 0.1MM Treatment, 1MM Treatment) are normally distributed (p-value = 1.0).
-  - **Levene's Test**:
-    - Variances are NOT equal (Statistic: nan, p-value: nan). Use non-parametric tests.
-  - **Kruskal-Wallis Test**:
-    - Statistic: 11.0, p-value: 0.0117. Significant differences exist between groups.
-  - **Tukey HSD Test**:
-    - Significant pairwise differences were found between all groups:
-      - 0.1MM Treatment vs. 1MM Treatment: Reject null hypothesis.
-      - 0.1MM Treatment vs. Control: Reject null hypothesis.
-      - 0.1MM Treatment vs. Stimulation: Reject null hypothesis.
-      - 1MM Treatment vs. Control: Reject null hypothesis.
-      - 1MM Treatment vs. Stimulation: Reject null hypothesis.
-      - Control vs. Stimulation: Reject null hypothesis.
+Conclusion: The 0.1 MM group is also significantly lower than the control group, suggesting a reduction in p-STAT6 with low-dose treatment.
 
+3.0.1 MM vs stim (stimulation)
 
+Mean difference = 0.0019
+
+p-adj = 0.9287 (not significant)
+
+Conclusion: There’s no significant difference between 0.1 MM and the stimulated group, implying that at this low dose, the treatment has a minimal effect compared to stimulation alone.
+
+4.1 MM vs ctrl
+
+Mean difference = 0.1646
+
+p-adj = 0.0 (statistically significant)
+
+Conclusion: The 1 MM group shows a significant increase in p-STAT6 compared to control, highlighting a clear upregulation at high dose.
+
+5.1 MM vs stim
+
+Mean difference = 0.4454
+
+p-adj = 0.0 (statistically significant)
+
+Conclusion: 1 MM treatment causes a significant rise in p-STAT6 compared to stimulation alone, confirming that high-dose treatment is potently activating the STAT6 pathway.
+
+6.ctrl vs stim
+
+Mean difference = 0.2808
+
+p-adj = 0.0 (statistically significant)
+
+Conclusion: The stimulated group has significantly lower p-STAT6 than the control group. This might suggest suppression or desensitization post-stimulation.
+
+General Conclusions:
+0.1 MM treatment does not significantly differ from stimulation but is lower than both control and 1 MM → minimal effect at this dose.
+
+1 MM significantly increases p-STAT6 compared to all other groups → indicates a dose-dependent enhancement.
+
+Stimulation alone lowers p-STAT6 compared to control → could reflect feedback inhibition or baseline pathway dynamics.
+
+✨These results indicate that STAT6 phosphorylation is tightly regulated by the concentration of treatment. While low-dose 17-AAG (0.1 MM) shows limited effects, high-dose (1 MM) clearly enhances STAT6 activation. This supports a concentration-dependent modulation of the STAT6 signaling pathway.✨

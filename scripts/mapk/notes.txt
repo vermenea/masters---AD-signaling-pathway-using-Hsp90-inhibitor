@@ -1,0 +1,60 @@
+📝results and some thoughts - MAPK
+
+1.0.1 MM vs 1 MM
+
+Mean difference = 0.0017
+
+p-adj = 0.0 (statistically significant)
+
+Conclusion: Although the numerical difference is small, the test still finds it statistically significant, with 0.1 MM slightly higher than 1 MM.
+
+2.0.1 MM vs ctrl (control)
+
+Mean difference = 0.1031
+
+p-adj = 0.0 (statistically significant)
+
+Conclusion: The 0.1 MM group is significantly lower than control, indicating MAPK is suppressed at this dose.
+
+3.0.1 MM vs stim (stimulation)
+
+Mean difference = -0.1948
+
+p-adj = 0.0 (statistically significant)
+
+Conclusion: The 0.1 MM group is significantly lower than stimulation, suggesting a strong suppression of MAPK activation.
+
+4.1 MM vs ctrl
+
+Mean difference = 0.1013
+
+p-adj = 0.0 (statistically significant)
+
+Conclusion: The 1 MM group is also significantly lower than control, showing that both doses reduce MAPK, with 1 MM having a slightly stronger effect.
+
+5.1 MM vs stim
+
+Mean difference = -0.1965
+
+p-adj = 0.0 (statistically significant)
+
+Conclusion: The 1 MM group is significantly lower than stimulation, again highlighting the strong inhibitory effect of the treatment.
+
+6.ctrl vs stim
+
+Mean difference = -0.2978
+
+p-adj = 0.0 (statistically significant)
+
+Conclusion: The stimulation group is significantly lower than the control group, suggesting that stimulation reduces MAPK activation even before treatment.
+
+🧪 General Conclusions:
+Both 0.1 MM and 1 MM treatments significantly suppress MAPK levels compared to control and stimulation.
+
+1 MM has the strongest suppressive effect, although even 0.1 MM shows significant downregulation.
+
+Interestingly, stimulation alone reduces MAPK compared to control, and treatment further amplifies this effect.
+
+The effect is dose-dependent but not linear, since the difference between 0.1 MM and 1 MM is minimal but still statistically notable.
+
+✨These results indicate that 17-AAG robustly inhibits MAPK signaling, likely by interfering with upstream kinases or chaperone-dependent pathways. The strong effect at both concentrations, especially in comparison to stimulation alone, suggests a potent regulatory role.✨

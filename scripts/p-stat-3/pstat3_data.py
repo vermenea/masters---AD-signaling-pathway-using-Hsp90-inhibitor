@@ -1,7 +1,3 @@
-data = {
-   
-}
-
 import pandas as pd
 
 #data after densynometry and before normalization with beta-actin

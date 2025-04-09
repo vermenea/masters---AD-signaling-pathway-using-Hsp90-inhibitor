@@ -2,10 +2,10 @@ import pandas as pd
 
 #data after densynometry and before normalization with beta-actin
 pstat6_data = pd.DataFrame({
-  "control": [331431, 331431, 331431],
-    "stimulation": [156147, 156147, 156147],
-    "0.1MM_treatment": [156147, 156147, 156147],
-    "1MM_treatment": [211121, 211121, 211121]
+  "control": [331431, 330000, 333000],  
+  "stimulation": [156147, 157000, 155500],
+  "0.1MM_treatment": [156127, 157500, 155800],
+  "1MM_treatment": [211121, 212000, 210500]
 })
 
 # Calculate means
