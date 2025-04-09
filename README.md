@@ -30,4 +30,9 @@ Densynometry was conducted using ImageJ. The results were then imported into Exc
 
 ## Results and Conclusion
 
-Soon...
+Our data suggest that Hsp90 inhibition via 17-AAG has differential effects across signaling pathways:
+
+-STAT3 and MAPK/ERK are suppressed by both 0.1 µM and 1 µM, consistent with reduced pro-inflammatory signaling and cell growth.
+-STAT6, in contrast, is only upregulated at higher concentrations, possibly indicating a compensatory pathway activation or cell-specific signaling rewiring.
+-These effects align with the role of Hsp90 in stabilizing a broad range of signaling proteins, including kinases and transcription factors. Its inhibition thus causes a domino-like collapse of multiple intracellular signaling cascades.
+-Such dose-dependent and pathway-specific modulation makes 17-AAG a promising molecule in the context of targeted therapeutic strategies for neurodegenerative conditions, where selective suppression of inflammatory or proliferative pathways is desirable.
