@@ -18,11 +18,11 @@ The aim of this study is to analyze the impact of the Hsp90 inhibitor, 17-AAG, o
 ### Analysis
 
 The phosphorylation status of the following signaling proteins was analyzed:
-- **STAT-1** ✅
-- **STAT-3** ❌todo
-- **STAT-6** ✅
-- **ERK**    ❌todo
-- **MAPK**   ❌todo
+- **STAT-1** 
+- **STAT-3** 
+- **STAT-6** 
+- **ERK**    
+- **MAPK**   
 
 The activation of these proteins, as well as the role of Hsp90 acetylation (acLys284/292), was assessed in activated HaCaT cells using **immunoblotting**.
 
