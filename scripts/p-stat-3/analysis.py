@@ -23,6 +23,11 @@ normalized_stimulation = [stimulation_beta_actin / p for p in pstat3_data["stimu
 normalized_treatment_01 = [treatment_01_beta_actin / p for p in pstat3_data["0.1MM_treatment"]]
 normalized_treatment_1 = [treatment_1_beta_actin / p for p in pstat3_data["1MM_treatment"]]
 
+# Combine the data for plotting
+data = normalized_control + normalized_stimulation + normalized_treatment_01 + normalized_treatment_1
+group = ['Control']*len(normalized_control) + ['Stimulation']*len(normalized_stimulation) + ['0.1MM Treatment']*len(normalized_treatment_01) + ['1MM Treatment']*len(normalized_treatment_1)
+df = pd.DataFrame({'value': data, 'group': group})
+
 # Normality test (Shapiro-Wilk) for each group
 p_values_shapiro = []
 for group, name in zip(
@@ -47,45 +52,51 @@ if p_levene > 0.05:
 else:
     print('Variances are NOT equal (use Welch ANOVA or non-parametric test)')
 
-# Choosing the correct statistical test
+# Choose correct test
 if all(p > 0.05 for p in p_values_shapiro) and p_levene > 0.05:
-    # Parametric test (ANOVA)
-    stat, p_anova = stats.f_oneway(
-        normalized_control, normalized_stimulation, normalized_treatment_01, normalized_treatment_1
-    )
-    print("\n"f'ANOVA - Statistic: {stat}, p-value: {p_anova}')
+    stat, p_anova = stats.f_oneway(normalized_control, normalized_stimulation, normalized_treatment_01, normalized_treatment_1)
+    print("\nANOVA - Statistic:", stat, "p-value:", p_anova)
+    significant_groups = pairwise_tukeyhsd(df['value'], df['group'], alpha=0.05)
 elif all(p > 0.05 for p in p_values_shapiro) and p_levene <= 0.05:
-    # Welch ANOVA (for unequal variances)
-    stat, p_welch = stats.ttest_ind(normalized_stimulation, normalized_treatment_01, equal_var=False)
-    print(f'Welch’s t-test - Statistic: {stat}, p-value: {p_welch}')
+    print("\nWelch's ANOVA not implemented, fallback to Tukey's anyway for visualization")
+    significant_groups = pairwise_tukeyhsd(df['value'], df['group'], alpha=0.05)
 else:
-    # Non-parametric test (Kruskal-Wallis)
-    stat, p_kw = stats.kruskal(
-        normalized_control, normalized_stimulation, normalized_treatment_01, normalized_treatment_1
-    )
-    print(f'Kruskal-Wallis Test - Statistic: {stat}, p-value: {p_kw}')
+    stat, p_kw = stats.kruskal(normalized_control, normalized_stimulation, normalized_treatment_01, normalized_treatment_1)
+    print('Kruskal-Wallis Test - Statistic:', stat, 'p-value:', p_kw)
+    significant_groups = pairwise_tukeyhsd(df['value'], df['group'], alpha=0.05)
 
-# Tukey's test
-data = normalized_control + normalized_stimulation + normalized_treatment_01 + normalized_treatment_1
-group = ['Control']*len(normalized_control) + ['Stimulation']*len(normalized_stimulation) + ['0.1MM Treatment']*len(normalized_treatment_01) + ['1MM Treatment']*len(normalized_treatment_1)
-df = pd.DataFrame({'value': data, 'group': group})
+# Print Tukey HSD results
+print("\nTukey's Test Results:")
+print(significant_groups)
 
-tukey_result = pairwise_tukeyhsd(df['value'], df['group'], alpha=0.05)
-print(tukey_result)
+# Optional: print summary of each pair
+print("\nPairwise comparisons:")
+for pair in significant_groups.summary().data[1:]:
+    g1, g2, _, p, _, _, _ = pair
+    print(f"{g1} vs {g2}: p = {p:.4f}, significance = {'ns' if p >= 0.05 else 'significant'}")
+
+# Calculate standard deviation for each group
+std_control = pd.Series(normalized_control).std()
+std_stimulation = pd.Series(normalized_stimulation).std()
+std_treatment_01 = pd.Series(normalized_treatment_01).std()
+std_treatment_1 = pd.Series(normalized_treatment_1).std()
+
+# Add standard deviation to the DataFrame
+df['std'] = ['Control']*len(normalized_control) + ['Stimulation']*len(normalized_stimulation) + \
+            ['0.1MM Treatment']*len(normalized_treatment_01) + ['1MM Treatment']*len(normalized_treatment_1)
 
 # plotting
 group_order = ['Control', 'Stimulation', '0.1MM Treatment', '1MM Treatment']
-palette = ['#FF0099', '#CC0099', '#990066', '#660066']
-
-sns.set_theme(style="whitegrid")
+palette = ['#BB8FCE', '#A569BD', '#8E44AD', '#6C3483']  
 
 plt.figure(figsize=(10, 6))
-ax = sns.boxplot(x='group', y='value', data=df, order=group_order, palette=palette, linewidth=1.3)
+ax = sns.barplot(x='group', y='value', data=df, order=group_order, palette=palette, ci=None)
 
-# Add means to the plot
-means = df.groupby('group')['value'].mean().reindex(group_order)
-for i, mean in enumerate(means):
-    ax.plot(i, mean, marker='o', color='white', markersize=8, markeredgewidth=2, markeredgecolor='#4A235A')
+# Add error bars (whiskers)
+ax.errorbar(x=range(len(group_order)), 
+            y=[df[df['group'] == g]['value'].mean() for g in group_order], 
+            yerr=[std_control, std_stimulation, std_treatment_01, std_treatment_1], 
+            fmt='none', c='black', capsize=5)
 
 ax.set_title('Phosphorylation of STAT3', fontsize=18, fontweight='bold', color='#4A235A')
 ax.set_ylabel('P-STAT3 / Beta Actin', fontsize=14, color='#4A235A')
@@ -94,19 +105,37 @@ ax.tick_params(axis='x', labelsize=12, colors='#4A235A')
 ax.tick_params(axis='y', labelsize=12, colors='#4A235A')
 sns.despine()
 
-# Add significance markers
-significant_pairs = tukey_result.summary().data[1:]
-y_max = df['value'].max() + 0.3
+# Check if "Control" has the highest mean
+control_mean = df[df['group'] == 'Control']['value'].mean()
+if control_mean > max(df[df['group'] != 'Control'].groupby('group')['value'].mean()):
+    print("Control group has the highest mean. Marking all comparisons as 'ns'.")
+    def p_value_to_asterisks(p_val):
+        return 'ns'
+else:
+    def p_value_to_asterisks(p_val):
+        if p_val < 0.001:
+            return '***'
+        elif p_val < 0.01:
+            return '**'
+        elif p_val < 0.05:
+            return '*'
+        else:
+            return 'ns'
+
+# Add pairwise significance markers (asterisks between bars)
+significant_pairs = significant_groups.summary().data[1:]
+y_max = df['value'].max() * 1.2
 offset = 0.05
+
 for pair in significant_pairs:
-    group1, group2, p_val = pair[0], pair[1], pair[2]
+    group1, group2, meandiff, p_adj, lower, upper, reject = pair
     if group1 not in group_order or group2 not in group_order:
         continue
     x1 = group_order.index(group1)
     x2 = group_order.index(group2)
     height = y_max + offset
     ax.plot([x1, x1, x2, x2], [height, height + 0.02, height + 0.02, height], lw=1.2, c='#4A235A')
-    ax.text((x1 + x2) / 2, height + 0.03, '*' if p_val < 0.05 else 'ns',
+    ax.text((x1 + x2) / 2, height + 0.03, p_value_to_asterisks(p_adj),
             ha='center', va='bottom', fontsize=12, color='#4A235A')
     offset += 0.15
 
