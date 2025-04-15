@@ -72,9 +72,6 @@ print(significant_groups)
 group_order = ['Control', 'Stimulation', '0.1MM Treatment', '1MM Treatment']
 palette = ['#BB8FCE', '#A569BD', '#8E44AD', '#6C3483']  
 
-
-sns.set_theme(style="whitegrid")
-
 # Calculate standard deviation for each group
 std_control = pd.Series(normalized_control).std()
 std_stimulation = pd.Series(normalized_stimulation).std()
